@@ -11,7 +11,7 @@ public class PlayerCollition : MonoBehaviour
     {
         if (collisionInfo.collider.tag == "Obstical")
         {
-            movement.enabled = false;
+            movement.enabled = false; 
         }
     }
 }
