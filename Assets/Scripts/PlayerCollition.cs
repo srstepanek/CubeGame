@@ -18,12 +18,20 @@ public class PlayerCollition : MonoBehaviour
     {
         if (collisionInfo.collider.tag == "Obstical")
         {
-            movement.enabled = false; 
+            movement.enabled = false;
+            Debug.Log("Dead");
         }
 
-        if (collisionInfo.collider.tag == "Jump Pad")
+        if (collisionInfo.gameObject.CompareTag("JumpPad"))
         {
-            movement.SetJumpTicks();
+            movement.Jump();
+            Debug.Log("Jump");
+        }
+
+        if (collisionInfo.gameObject.CompareTag("SuperJumpPad"))
+        {
+            movement.Jump();
+            Debug.Log("SuperJump");
         }
     }
 
@@ -34,7 +42,10 @@ public class PlayerCollition : MonoBehaviour
             player.transform.position = startPos;
             player.transform.Rotate(0.0f, 0.0f, 0.0f, Space.Self);
 
+            movement.Restart();
             movement.enabled = true;
+
+            Debug.Log("Restart");
         }     
     }
 }

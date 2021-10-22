@@ -9,6 +9,15 @@ public class PlayerMovement : MonoBehaviour
     public float PlayerMotion = 25f;
 
     int jumpTicks = 0;
+    public int maxJump = 0;
+
+    private void Update()
+    {
+        if (jumpTicks > 0) {
+            rb.AddForce(0, PlayerMotion * Time.deltaTime, 0, ForceMode.VelocityChange);
+            jumpTicks--;
+        }
+    }
 
     // Update is called once per frame
     void FixedUpdate()
@@ -25,15 +34,26 @@ public class PlayerMovement : MonoBehaviour
             rb.AddForce(0, 0, -PlayerMotion * Time.deltaTime, ForceMode.VelocityChange);
         }
 
-        if (jumpTicks > 0)
+
+    //Clamp
+        if(Speed > 50)
         {
-            rb.AddForce(0f, PlayerMotion * Time.deltaTime, 0f, ForceMode.VelocityChange);
-            jumpTicks -= 1;
+            rb.velocity = new Vector3(50, rb.velocity.y, rb.velocity.z); 
         }
     }
 
-    public void SetJumpTicks()
+    public void Jump()
     {
-        jumpTicks = 100;
+        jumpTicks = maxJump;
+    }
+
+    public void SuperJump()
+    {
+        jumpTicks = maxJump * 3;
+    }
+
+    public void Restart()
+    {
+        rb.velocity = Vector3.zero;
     }
 }
