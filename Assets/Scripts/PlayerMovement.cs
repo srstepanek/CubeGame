@@ -8,6 +8,8 @@ public class PlayerMovement : MonoBehaviour
     public float Speed = 25f;
     public float PlayerMotion = 25f;
 
+    public bool hasShield = false;
+
     int jumpTicks = 0;
     public int maxJump = 0;
 
@@ -53,8 +55,6 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, 25);
         }
-
-        Debug.Log(rb.velocity.z);
     }
 
     public void Jump()
@@ -65,5 +65,15 @@ public class PlayerMovement : MonoBehaviour
     public void Restart()
     {
         rb.velocity = Vector3.zero;
+    }
+
+    public void setShield(bool shield)
+    {
+        hasShield = shield;
+    }
+
+    public bool getShield()
+    {
+        return hasShield;
     }
 }

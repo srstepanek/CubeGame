@@ -7,6 +7,8 @@ TagManager:
   - Obstical
   - JumpPad
   - SuperJumpPad
+  - Shield
+  - ShieldPickUp
   layers:
   - Default
   - TransparentFX
