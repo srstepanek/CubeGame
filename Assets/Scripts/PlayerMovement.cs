@@ -13,9 +13,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        if (jumpTicks > 0) {
+        if (jumpTicks > 0)
+        {
             rb.AddForce(0, PlayerMotion * Time.deltaTime, 0, ForceMode.VelocityChange);
             jumpTicks--;
+
+            Debug.Log("jump");
         }
     }
 
@@ -35,21 +38,28 @@ public class PlayerMovement : MonoBehaviour
         }
 
 
-    //Clamp
-        if(Speed > 50)
+        //Clamp
+        if (rb.velocity.x < -50) //Forward Movement
         {
-            rb.velocity = new Vector3(50, rb.velocity.y, rb.velocity.z); 
+            rb.velocity = new Vector3(-50, rb.velocity.y, rb.velocity.z);
         }
+
+        if (rb.velocity.z < -25) //Left Movement
+        {
+            rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, -25);
+        }
+
+        if (rb.velocity.z > 25) //Right Movement
+        {
+            rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, 25);
+        }
+
+        Debug.Log(rb.velocity.z);
     }
 
     public void Jump()
     {
         jumpTicks = maxJump;
-    }
-
-    public void SuperJump()
-    {
-        jumpTicks = maxJump * 3;
     }
 
     public void Restart()
