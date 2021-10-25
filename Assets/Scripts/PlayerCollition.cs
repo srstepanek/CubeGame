@@ -57,6 +57,8 @@ public class PlayerCollition : MonoBehaviour
             else { //else Fail
                 movement.enabled = false;
                 Debug.Log("Dead");
+
+                restart();
             }
         }
 
@@ -71,20 +73,24 @@ public class PlayerCollition : MonoBehaviour
     {
         if (Input.GetButtonUp("Restart"))
         {
-            player.transform.position = startPos;
-            player.transform.Rotate(0.0f, 0.0f, 0.0f, Space.Self);
-
             restart();
-
-            movement.Restart();
-            movement.enabled = true;
-
             Debug.Log("Restart");
-        }     
+        }
+
+        if (player.transform.position.y < -5)
+        {
+            restart();
+            Debug.Log("Fell Off");
+        }
     }
 
     void restart()
     {
+
+        player.transform.position = startPos;
+        player.transform.Rotate(0.0f, 0.0f, 0.0f, Space.Self);
+
+        Debug.Log("Restart");
         for (int i = 0; i < moved.Count; i++)
         {
             Vector3 temp = moved[i].transform.position;
@@ -95,6 +101,9 @@ public class PlayerCollition : MonoBehaviour
         Destroy(shield);
         movement.setShield(false);
 
-        moved.Clear(); 
+        moved.Clear();
+
+        movement.Restart();
+        movement.enabled = true;
     }
 }
