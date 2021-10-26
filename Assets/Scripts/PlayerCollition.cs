@@ -24,7 +24,7 @@ public class PlayerCollition : MonoBehaviour
 
         if (collisionInfo.gameObject.CompareTag("ShieldPickUp"))
         {
-            //Move PickUp Below Level
+        //Move PickUp Below Level
             Vector3 temp = collisionInfo.gameObject.transform.position;
             collisionInfo.gameObject.transform.position = new Vector3(temp.x, temp.y - 5, temp.z);
 
@@ -54,8 +54,7 @@ public class PlayerCollition : MonoBehaviour
                 Destroy(shield);
                 movement.setShield(false);
             }
-            else
-            { //else Fail
+            else { //else Fail
                 movement.enabled = false;
                 Debug.Log("Dead");
 
