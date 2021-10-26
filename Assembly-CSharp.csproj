@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{D02845B6-C7BC-3FF1-937D-D49A05884D72}</ProjectGuid>
+    <ProjectGuid>{A2083B20-033A-5C4D-12A0-42C4F17E9EAE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -56,6 +56,7 @@
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\FollowPlayer.cs" />
     <Compile Include="Assets\Scripts\PlayerCollition.cs" />
+    <Compile Include="Assets\Scripts\Music.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
